@@ -10,7 +10,7 @@ var B = "2 dogs and 2 cats" // Giving variable B a string
 var Brown_Dog = "Doug", Black_Dog = "Lilly", // Pet names
     White_Cat = "Shiba", Black_Cat = "Felix"; 
 
-var z = (A + B); // couldn't get this to work idk..
+var z = (A + B); // Should I do something different?
 
-A.fontcolor(red); // assigning A the fontcolor red
+z.fontcolor(red); // assigning A the fontcolor red
 

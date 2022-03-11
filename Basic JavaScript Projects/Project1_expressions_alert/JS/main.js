@@ -12,5 +12,4 @@ var Brown_Dog = "Doug", Black_Dog = "Lilly", // Pet names
 
 var z = (A + B); // Should I do something different?
 
-z.fontcolor(red); // assigning A the fontcolor red
-
+document.write(z.fontcolor('red'))

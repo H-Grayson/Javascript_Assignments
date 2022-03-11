@@ -10,3 +10,9 @@ function myFunction() {
     sentence+= " a lot from this course!"; // Concatenating with the var sentence
     document.getElementById("Concatenate_String").innerHTML = sentence; //Giving sentence an id
 }
+
+function tacoTuesday() {
+    var taco = "Tacos are great"; // Assigning a variable text
+    document.getElementById("taco").innerHTML = taco;
+
+}

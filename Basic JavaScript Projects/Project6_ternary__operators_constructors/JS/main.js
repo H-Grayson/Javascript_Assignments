@@ -44,3 +44,4 @@ function cost() {       // adding tax to a static amount
         return total;
     }
 }
+

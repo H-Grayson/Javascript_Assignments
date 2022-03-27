@@ -9,7 +9,6 @@ const Calculator = {
     // this will hold the operator, we sit it to null for now
     operator: null,
 };
-
 // this modifies values each time a button is clicked
 function Input_Digit(digit) {
     const { Display_Value, Wait_Second_Operand } = Calculator;
@@ -37,7 +36,6 @@ function Input_Decimal(dot) {
     }
 }
 
-//this section handles operators
 function Handle_Operator(Next_Operator) {
     const { First_Operand, Display_Value, operator } = Calculator
     //when an operator key is pressed, we convert the current number
@@ -50,6 +48,7 @@ function Handle_Operator(Next_Operator) {
         Calculator.operator = Next_Operator;
         return;
     }
+    
     if (First_Operand == null) {
         Calculator.First_Operand = Value_of_Input;
     } else if (operator) {//checks if an operator already exists
@@ -65,47 +64,43 @@ function Handle_Operator(Next_Operator) {
         Calculator.Display_Value = parseFloat(result);
         Calculator.First_Operand = parseFloat(result);
 
-
     }
     Calculator.Wait_Second_Operand = true;
     Calculator.operator = Next_Operator;
 }
-    const Perform_Calculation = {
-        '/': (First_Operand, Second_Operand) => First_Operand / Second_Operand,
-        
-        '*': (First_Operand, Second_Operand) => First_Operand * Second_Operand,
 
-        '+': (First_Operand, Second_Operand) => First_Operand + Second_Operand,
+const Perform_Calculation = {
+    '/': (First_Operand, Second_Operand) => First_Operand / Second_Operand,
+    
+    '*': (First_Operand, Second_Operand) => First_Operand * Second_Operand,
 
-        '-': (First_Operand, Second_Operand) => First_Operand - Second_Operand,
+    '+': (First_Operand, Second_Operand) => First_Operand + Second_Operand,
 
-        '=': (First_Operand, Second_Operand) => Second_Operand
-    };
+    '-': (First_Operand, Second_Operand) => First_Operand - Second_Operand,
 
-    function Calculator_Reset() {
-        Calculator.Display_Value = '0';
-        Calculator.First_Operand = null;
-        Calculator.Wait_Second_Operand = false;
-        Calculator.operator = null;
-    }
-    // this function updates the screen with the contents of Display_Value
-    function Update_Display() {
-        const display = document.querySelector('.calculator-screen');
-        display.value = Calculator.Display_Value;
+    '=': (First_Operand, Second_Operand) => Second_Operand
+};
+
+function Calculator_Reset() {
+    Calculator.Display_Value = '0';
+    Calculator.First_Operand = null;
+    Calculator.Wait_Second_Operand = false;
+    Calculator.operator = null;
+}
+
+function Update_Display() {
+    const display = document.querySelector('.calculator-screen');
+    display.value = Calculator.Display_Value;
 }
     Update_Display();
-    // this section monitors button clicks
     const keys = document.querySelector('.calculator-keys');
     keys.addEventListener('click', (event) => {
-        // the target variable is an object that represents the element
-        // that was clicked
         const { target } = event;
-        // if the element that was clicked on is not a button, oexit the function
         if (!target.matches('button')) {
             return;
         }
-        
-        if (target.classList.contains('operator')) {
+
+        if (target.classList.contains("operator")) {
             Handle_Operator(target.value);
             Update_Display();
             return;
@@ -114,9 +109,9 @@ function Handle_Operator(Next_Operator) {
         if (target.classList.contains('decimal')) {
             Input_Decimal(target.value);
             Update_Display();
-            return;
+                return;
         }
-        // ensures that AC clears the numbeers from the Calculator
+
         if (target.classList.contains('all-clear')) {
             Calculator_Reset();
             Update_Display();

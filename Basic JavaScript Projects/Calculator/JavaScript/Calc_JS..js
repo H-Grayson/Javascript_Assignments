@@ -109,7 +109,7 @@ function Update_Display() {
         if (target.classList.contains('decimal')) {
             Input_Decimal(target.value);
             Update_Display();
-                return;
+            return;
         }
 
         if (target.classList.contains('all-clear')) {
